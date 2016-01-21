@@ -33,4 +33,19 @@ private static final Logger logger = LoggerFactory.getLogger(MemberController.cl
         
         return "home";
     }
+    
+    
+    @RequestMapping(value = "/member/info", method = RequestMethod.GET)
+    public String info(Locale locale, Model model) {
+        logger.info("member info");
+        
+        Date date = new Date();
+        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+        
+        String formattedDate = dateFormat.format(date);
+        
+        model.addAttribute("serverTime", formattedDate );
+        
+        return "home";
+    }
 }
